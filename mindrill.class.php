@@ -12,6 +12,8 @@ class Mindrill {
 	public function api ($path, array $parameters = []) {
 		$parameters['key'] = $this->api_key;
 		
+		// @see https://mandrillapp.com/api/docs/messages.JSON.html
+		
 		$endpoint = 'https://mandrillapp.com/api/1.0/' . $path . '.json';
 		
 		$ch = curl_init();
