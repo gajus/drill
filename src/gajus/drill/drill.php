@@ -2,6 +2,7 @@
 namespace gajus\drill;
 
 class Drill {
+	
 	private
 		$api_key;
 
@@ -15,7 +16,7 @@ class Drill {
 	/**
 	 * @see https://mandrillapp.com/api/docs/messages.JSON.html
 	 */
-	public function call ($path, array $parameters = []) {
+	public function api ($path, array $parameters = []) {
 		$parameters['key'] = $this->api_key;
 		
 		$endpoint = 'https://mandrillapp.com/api/1.0/' . $path . '.json';
