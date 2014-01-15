@@ -19,5 +19,16 @@ var_dump(
 					['name' => 'Gajus Kuizinas', 'email' => 'g.kuizinas@anuary.com']
 				]
 			]
+		]),
+	$mapi->api('messages/send',
+		['message' => [
+				'text' => 'test',
+				'subject' => 'test',
+				'from_email' => 'invalid email',
+				'from_name' => 'Gajus Kuizinas',
+				'to' => [
+					['name' => 'Gajus Kuizinas', 'email' => 'g.kuizinas@anuary.com']
+				]
+			]
 		])
 );
