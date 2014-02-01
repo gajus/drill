@@ -31,7 +31,7 @@ class Drill {
 			CURLOPT_SSL_VERIFYHOST => 2,
 			CURLOPT_SSL_VERIFYPEER => true,
 			CURLOPT_POST => true,
-			CURLOPT_USERAGENT => 'Mandrill-PHP/0.0.1',
+			CURLOPT_USERAGENT => 'Drill-PHP/0.0.1',
 			CURLOPT_HTTPHEADER => ['Content-Type: application/json'],
 			CURLOPT_POSTFIELDS => json_encode($parameters)
 		]);
