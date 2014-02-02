@@ -1,20 +1,26 @@
 <?php
 namespace gajus\drill;
 
-class Drill {
-	
+/**
+ * @link https://github.com/gajus/drill for the canonical source repository
+ * @copyright Copyright (c) 2013-2014, Anuary (http://anuary.com/)
+ * @license https://github.com/gajus/drill/blob/master/LICENSE BSD 3-Clause
+ */
+class Client {
 	private
 		$api_key;
 
 	/**
 	 * @param string $key Mandrill API key.
 	 */
-	public function __construct ($key) {
-		$this->api_key = $key;
+	public function __construct ($api_key) {
+		$this->api_key = $api_key;
 	}
 	
 	/**
 	 * @see https://mandrillapp.com/api/docs/messages.JSON.html
+	 * @param string $path
+	 * @param array $parameters
 	 */
 	public function api ($path, array $parameters = []) {
 		$parameters['key'] = $this->api_key;

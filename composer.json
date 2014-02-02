@@ -1,6 +1,6 @@
 {
 	"name": "gajus/drill",
-	"description": "",
+	"description": "Mandrill API interface with no bells and whistles.",
 	"keywords": ["mandrill", "email"],
 	"homepage": "https://github.com/gajus/drill",
 	"type": "library",
