@@ -1,5 +1,8 @@
 # Drill
 
+[![Build Status](https://travis-ci.org/gajus/drill.png?branch=master)](https://travis-ci.org/gajus/drill)
+[![Coverage Status](https://coveralls.io/repos/gajus/drill/badge.png)](https://coveralls.io/r/gajus/drill)
+
 [Mandrill API](https://mandrillapp.com/api/docs/) interface with no bells and whistles. Drill Client implementation makes no assumptions about the underlying API schema or required parameters. Therefore, it is not an abstraction that will prevent your code from braking if/when Mandrill API changes. It is marely used to interfact with the API endpoint and handle errors.
 
 The only provided method is `api`
