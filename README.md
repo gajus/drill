@@ -1,6 +1,6 @@
 # Drill
 
-[Mandrill API](https://mandrillapp.com/api/docs/) interface with no bells and whistles. Drill Client implementation makes no assumptions about the underlying API schema or required parameters. Therefore it is not an abstraction that will prevent your code braking when Mandrill API changes. It is marely used to interfact with the API endpoint and handle errors.
+[Mandrill API](https://mandrillapp.com/api/docs/) interface with no bells and whistles. Drill Client implementation makes no assumptions about the underlying API schema or required parameters. Therefore, it is not an abstraction that will prevent your code from braking if/when Mandrill API changes. It is marely used to interfact with the API endpoint and handle errors.
 
 The only provided method is `api`
 

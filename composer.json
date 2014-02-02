@@ -4,7 +4,7 @@
 	"keywords": ["mandrill", "email"],
 	"homepage": "https://github.com/gajus/drill",
 	"type": "library",
-	"version": "0.0.1"
+	"version": "0.0.1",
 	"license": "BSD-3-Clause",
 	"authors": [
 		{
