@@ -52,16 +52,42 @@ class Client {
 		
 		$response = curl_exec($ch);
 
-		// @todo check for non 200 response, https://mandrillapp.com/api/docs/
-		
-		if (curl_errno($ch)) {			
-			throw new \Exception(error_get_last()['message']);
-		}
-		
-		curl_close($ch);
-
 		$response = json_decode($response, true);
 
+		if (curl_getinfo($ch, \CURLINFO_HTTP_CODE) !== 200) {
+			$error_name = 'gajus\drill\exception\\' . $this->fromCamelCase($response['name']);
+
+			if (class_exists($error_name)) {
+				throw new $error_name ($response['message']);
+			} else {
+				var_dump($error_name); exit;
+				throw new \gajus\drill\exception\Error($response['message']);
+			}
+		}
+
+		/**
+		 * @see ClientTest::testRequestWithoutRequiredParameters
+		 */
+		if ($response === []) {
+			throw new \RuntimeException('Missing required parameters.');
+		}
+
+		curl_close($ch);
+
 		return $response;
+	}
+
+	/**
+	 * @see http://stackoverflow.com/a/1993772/368691
+	 */
+	static private function fromCamelCase ($input) {
+		preg_match_all('!([A-Z][A-Z0-9]*(?=$|[A-Z][a-z0-9])|[A-Za-z][a-z0-9]+)!', $input, $matches);
+		
+		$ret = $matches[0];
+		
+		foreach ($ret as &$match) {
+			$match = $match == strtoupper($match) ? strtolower($match) : lcfirst($match);
+		}
+		return implode('_', $ret);
 	}
 }
