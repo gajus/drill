@@ -68,7 +68,7 @@ try {
 } catch (\RuntimeException $e) {
     // If error can occur only after the request.
 } catch (\InvalidArgumentException $e) {
-    // You should not be really catching InvalidArgumentException.
+    // You should not be catching InvalidArgumentException.
     // These should be your guidance during the development only and should lead to a direct bug fix.
 } catch (\Exception $e) {
     // Your last resource, catch all.
