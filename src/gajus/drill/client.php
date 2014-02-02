@@ -60,7 +60,6 @@ class Client {
 			if (class_exists($error_name)) {
 				throw new $error_name ($response['message']);
 			} else {
-				var_dump($error_name); exit;
 				throw new \gajus\drill\exception\Error($response['message']);
 			}
 		}
