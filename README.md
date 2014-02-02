@@ -1,17 +1,17 @@
 # Drill
 
-[Mandrill API](https://mandrillapp.com/api/docs/) interface.
+[Mandrill API](https://mandrillapp.com/api/docs/) interface with no bells and whistles. Drill Client implementation makes no assumptions about the underlying API schema or required parameters. Therefore it is not an abstraction that will prevent your code braking when Mandrill API changes. It is marely used to interfact with the API endpoint and handle errors.
 
-The only provided method is `api`:
+The only provided method is `api`
 
 ```php
-$drill = new \gajus\drill\Drill([$key]);
+$drill = new \gajus\drill\Gajus([$key]);
 $drill->api($path, [array $parameters = []]);
 ```
 
-The output is the JSON response converted to an associative array:
+Mandrill response is converted to an associative array:
 
-```
+```php
 array(1) {
   [0]=>
   array(4) {
@@ -27,4 +27,4 @@ array(1) {
 }
 ```
 
-Request is considered successful when `status` is no eq. to "error".
+Request is considered successful when `status` is no equal to "error".

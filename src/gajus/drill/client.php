@@ -24,6 +24,14 @@ class Client {
 	 */
 	public function api ($path, array $parameters = []) {
 		$parameters['key'] = $this->api_key;
+
+		if (strpos($path, '/') === 0) {
+			throw new \InvalidArgumentException('Endpoint path must not start with /.');
+		}
+
+		if (strpos($path, '.') !== false) {
+			throw new \InvalidArgumentException('Endpoint must not include output format.');
+		}
 		
 		$endpoint = 'https://mandrillapp.com/api/1.0/' . $path . '.json';
 		
