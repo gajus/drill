@@ -8,7 +8,7 @@
 The only provided method is `api`
 
 ```php
-$drill = new \gajus\drill\Gajus('fxBTBjWKxJ05K9MjkFak1A' /* api key*/);
+$drill = new \gajus\drill\Client('fxBTBjWKxJ05K9MjkFak1A' /* api key*/);
 $response = $drill->api('messages/send' /* endpoint */, [
     'message' => [
         'text' => 'Test',
@@ -48,7 +48,7 @@ All errors that occur during the runtime will result in `gajus\drill\exception\E
 Beware that errors returned from Mandrill API have inconsistent naming convention (PascalCase vs underscore, e.g. "UserError", "Invalid_Key"). Drill will cast all errors to underscore convention (e.g. "UserError" becomes "User_Error").
 
 ```php
-$drill = new \gajus\drill\Gajus('fxBTBjWKxJ05K9MjkFak1A');
+$drill = new \gajus\drill\Client('fxBTBjWKxJ05K9MjkFak1A');
 
 try {
   $response = $drill->api('messages/send', [
