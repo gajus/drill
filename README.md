@@ -8,7 +8,7 @@
 The only provided method is `api`
 
 ```php
-$drill = new \gajus\drill\Client('fxBTBjWKxJ05K9MjkFak1A' /* api key*/);
+$drill = new \Gajus\Drill\Client('fxBTBjWKxJ05K9MjkFak1A' /* api key*/);
 $response = $drill->api('messages/send' /* endpoint */, [
     'message' => [
         'text' => 'Test',
@@ -41,14 +41,14 @@ array(1) {
 
 ## Handling errors
 
-Cases that can be before making request to the API or rules that are enforced by Drill implmentation, as opposed to to API spec, will throw `InvalidArgumentException`.
+Cases that can be caught before making request to the API or rules that are enforced by Drill implmentation, as opposed to the API spec, will throw `Gajus\Drill\Exception\InvalidArgumentException`.
 
-All errors that occur during the runtime will result in `gajus\drill\exception\Error` exception, which in turn extends `RuntimeException`. All error specific exceptions extend `gajus\drill\exception\Error`.
+All errors that occur during the runtime will result in `Gajus\Drill\Exception\ErrorException` exception.
 
-Beware that errors returned from Mandrill API have inconsistent naming convention (PascalCase vs underscore, e.g. "UserError", "Invalid_Key"). Drill will cast all errors to underscore convention (e.g. "UserError" becomes "User_Error").
+Beware that errors returned from Mandrill API have inconsistent naming convention (CamelCase vs underscore, e.g. "UserError", "Invalid_Key"). Drill will cast all errors to CamelCase convention (e.g. "Invalid_Key" becomes "InvalidKeyException").
 
 ```php
-$drill = new \gajus\drill\Client('fxBTBjWKxJ05K9MjkFak1A');
+$drill = new \Gajus\Drill\Client('fxBTBjWKxJ05K9MjkFak1A');
 
 try {
   $response = $drill->api('messages/send', [
@@ -61,16 +61,11 @@ try {
           ],
       ]
   ]);
-} catch (\gajus\drill\exception\Validation_Error $e) {
+} catch (\Gajus\Drill\Exception\ValidationErrorException $e) {
     // If you are expecting one error more than anything else.
-} catch (\gajus\drill\exception\Error $e) {
+} catch (\Gajus\Drill\Exception\ErrorException $e) {
     // If you do not expect error but one might occur (you might run out of credit).
-} catch (\RuntimeException $e) {
-    // If error can occur only after the request.
-} catch (\InvalidArgumentException $e) {
-    // You should not be catching InvalidArgumentException.
-    // These should be your guidance during the development only and should lead to a direct bug fix.
-} catch (\Exception $e) {
-    // Your last resource, catch all.
+} catch (\Gajus\Drill\Exception\DrillException $e) {
+    // All other exceptions.
 }
 ```

@@ -1,11 +1,8 @@
 <?php
-namespace gajus\drill\exception;
+namespace Gajus\Drill\Exception;
 
 /**
  * @link https://github.com/gajus/drill for the canonical source repository
- * @copyright Copyright (c) 2013-2014, Anuary (http://anuary.com/)
  * @license https://github.com/gajus/drill/blob/master/LICENSE BSD 3-Clause
  */
-class Invalid_Key extends \gajus\drill\exception\Error {
-
-}
+class RuntimeException extends \Gajus\Drill\Exception\DrillException {}

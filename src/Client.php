@@ -1,9 +1,8 @@
 <?php
-namespace gajus\drill;
+namespace Gajus\Drill;
 
 /**
  * @link https://github.com/gajus/drill for the canonical source repository
- * @copyright Copyright (c) 2013-2014, Anuary (http://anuary.com/)
  * @license https://github.com/gajus/drill/blob/master/LICENSE BSD 3-Clause
  */
 class Client {
@@ -26,11 +25,11 @@ class Client {
 		$parameters['key'] = $this->api_key;
 
 		if (strpos($path, '/') === 0) {
-			throw new \InvalidArgumentException('Endpoint path must not start with /.');
+			throw new Exception\InvalidArgumentException('Endpoint path must not start with /.');
 		}
 
 		if (strpos($path, '.') !== false) {
-			throw new \InvalidArgumentException('Endpoint must not include output format.');
+			throw new Exception\InvalidArgumentException('Endpoint must not include output format.');
 		}
 		
 		$endpoint = 'https://mandrillapp.com/api/1.0/' . $path . '.json';
@@ -55,12 +54,12 @@ class Client {
 		$response = json_decode($response, true);
 
 		if (curl_getinfo($ch, \CURLINFO_HTTP_CODE) !== 200) {
-			$error_name = 'gajus\drill\exception\\' . $this->fromCamelCase($response['name']);
+			$error_name = 'Gajus\Drill\Exception\\' . $this->toCamelCase($response['name']) . 'Exception';
 
 			if (class_exists($error_name)) {
 				throw new $error_name ($response['message']);
 			} else {
-				throw new \gajus\drill\exception\Error($response['message']);
+				throw new \Gajus\Drill\Exception\ErrorException($response['message']);
 			}
 		}
 
@@ -68,7 +67,7 @@ class Client {
 		 * @see ClientTest::testRequestWithoutRequiredParameters
 		 */
 		if ($response === []) {
-			throw new \RuntimeException('Missing required parameters.');
+			throw new \Gajus\Drill\Exception\RuntimeException('Missing required parameters.');
 		}
 
 		curl_close($ch);
@@ -76,17 +75,7 @@ class Client {
 		return $response;
 	}
 
-	/**
-	 * @see http://stackoverflow.com/a/1993772/368691
-	 */
-	static private function fromCamelCase ($input) {
-		preg_match_all('!([A-Z][A-Z0-9]*(?=$|[A-Z][a-z0-9])|[A-Za-z][a-z0-9]+)!', $input, $matches);
-		
-		$ret = $matches[0];
-		
-		foreach ($ret as &$match) {
-			$match = $match == strtoupper($match) ? strtolower($match) : lcfirst($match);
-		}
-		return implode('_', $ret);
+	static private function toCamelCase ($input) {
+		return str_replace('_', '', $input);
 	}
 }

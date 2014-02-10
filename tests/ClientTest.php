@@ -4,11 +4,11 @@ class ClientTest extends PHPUnit_Framework_TestCase {
         $drill;
 
     public function setUp () {
-        $this->drill = new \gajus\drill\Client('fxBTBjWKxJ05K9MjkFak1A');
+        $this->drill = new \Gajus\Drill\Client('fxBTBjWKxJ05K9MjkFak1A');
     }
 
     /**
-     * @expectedException InvalidArgumentException
+     * @expectedException Gajus\Drill\Exception\InvalidArgumentException
      * @expectedExceptionMessage Endpoint path must not start with /.
      */
     public function testPathStartsWithSlash () {
@@ -16,7 +16,7 @@ class ClientTest extends PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @expectedException InvalidArgumentException
+     * @expectedException Gajus\Drill\Exception\InvalidArgumentException
      * @expectedExceptionMessage Endpoint must not include output format.
      */
     public function testPathIncludesOutputFormat () {
@@ -24,7 +24,7 @@ class ClientTest extends PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @expectedException gajus\drill\exception\Invalid_Key
+     * @expectedException Gajus\Drill\Exception\InvalidKeyException
      * @expectedExceptionMessage Invalid API key
      */
     public function testInvalidCredentials () {
@@ -34,7 +34,7 @@ class ClientTest extends PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @expectedException gajus\drill\exception\Validation_Error
+     * @expectedException Gajus\Drill\Exception\ValidationErrorException
      * @expectedExceptionMessage Validation error: {"message":{"from_email":"An email address must contain a single @"}}
      */
     public function testInvalidParameters () {
@@ -51,7 +51,7 @@ class ClientTest extends PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @expectedException gajus\drill\exception\User_Error
+     * @expectedException Gajus\Drill\Exception\UserErrorException
      * @expectedExceptionMessage Unknown method "users.ping3"
      */
     public function testNotExistingEndoint () {
@@ -64,7 +64,7 @@ class ClientTest extends PHPUnit_Framework_TestCase {
      * This seem to be a bug, as the expected behaviour is to at least get
      * non 200 HTTP response.
      *
-     * @expectedException RuntimeException
+     * @expectedException Gajus\Drill\Exception\RuntimeException
      * @expectedExceptionMessage Missing required parameters.
      */
     public function testRequestWithoutRequiredParameters () {
