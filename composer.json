@@ -4,7 +4,7 @@
 	"keywords": ["mandrill", "email"],
 	"homepage": "https://github.com/gajus/drill",
 	"type": "library",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"license": "BSD-3-Clause",
 	"authors": [
 		{
@@ -13,7 +13,7 @@
 		}
 	],
 	"require": {
-		"php": ">=5.5"
+		"php": ">=5.3"
 	},
 	"require-dev": {
 	    "satooshi/php-coveralls": "dev-master"

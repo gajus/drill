@@ -54,12 +54,12 @@ class Client {
 		$response = json_decode($response, true);
 
 		if (curl_getinfo($ch, \CURLINFO_HTTP_CODE) !== 200) {
-			$error_name = 'Gajus\Drill\Exception\\' . $this->toCamelCase($response['name']) . 'Exception';
+			$error_name = 'Gajus\Drill\Exception\\RuntimeException\\' . $this->toCamelCase($response['name']) . 'Exception';
 
 			if (class_exists($error_name)) {
 				throw new $error_name ($response['message']);
 			} else {
-				throw new \Gajus\Drill\Exception\ErrorException($response['message']);
+				throw new \Gajus\Drill\Exception\RuntimeException($response['message']);
 			}
 		}
 

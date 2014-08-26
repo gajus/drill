@@ -24,7 +24,7 @@ class ClientTest extends PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @expectedException Gajus\Drill\Exception\InvalidKeyException
+     * @expectedException Gajus\Drill\Exception\RuntimeException\InvalidKeyException
      * @expectedExceptionMessage Invalid API key
      */
     public function testInvalidCredentials () {
@@ -34,7 +34,7 @@ class ClientTest extends PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @expectedException Gajus\Drill\Exception\ValidationErrorException
+     * @expectedException Gajus\Drill\Exception\RuntimeException\ValidationErrorException
      * @expectedExceptionMessage Validation error: {"message":{"from_email":"An email address must contain a single @"}}
      */
     public function testInvalidParameters () {
@@ -51,7 +51,7 @@ class ClientTest extends PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @expectedException Gajus\Drill\Exception\UserErrorException
+     * @expectedException Gajus\Drill\Exception\RuntimeException\UserErrorException
      * @expectedExceptionMessage Unknown method "users.ping3"
      */
     public function testNotExistingEndoint () {
@@ -61,7 +61,7 @@ class ClientTest extends PHPUnit_Framework_TestCase {
     /**
      * Unfortunately, it seems that Mandrill endpoint does not trigger an
      * error if you send a request without all the required parameters.
-     * This seem to be a bug, as the expected behaviour is to at least get
+     * This seem to be a bug, as the expected behavior is to at least get
      * non 200 HTTP response.
      *
      * @expectedException Gajus\Drill\Exception\RuntimeException
