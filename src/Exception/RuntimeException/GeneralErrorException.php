@@ -5,4 +5,6 @@ namespace Gajus\Drill\Exception\RuntimeException;
  * @link https://github.com/gajus/drill for the canonical source repository
  * @license https://github.com/gajus/drill/blob/master/LICENSE BSD 3-Clause
  */
-class GeneralErrorException extends \Gajus\Drill\Exception\RuntimeException {}
+class GeneralErrorException extends \Gajus\Drill\Exception\RuntimeException {
+    
+}
