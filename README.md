@@ -15,7 +15,7 @@ The only provided method is `api`
 /**
  * @param string $key Mandrill API key.
  */
-$drill = new \Gajus\Drill\Client('your Api key');
+$drill = new \Gajus\Drill\Client('NlLdhX5FVKS55VBK1xPW_g');
 
 /**
  * @see https://mandrillapp.com/api/docs/messages.JSON.html
