@@ -4,7 +4,7 @@ class ClientTest extends PHPUnit_Framework_TestCase {
         $drill;
 
     public function setUp () {
-        $this->drill = new \Gajus\Drill\Client('fxBTBjWKxJ05K9MjkFak1A');
+        $this->drill = new \Gajus\Drill\Client('NlLdhX5FVKS55VBK1xPW_g');
     }
 
     /**
